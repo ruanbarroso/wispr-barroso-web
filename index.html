@@ -23,7 +23,7 @@
     <h1>Fale.<br>Solte.<br><em>Está no cursor.</em></h1>
     <p class="lede">Sua voz vira texto <strong>ao vivo</strong>, em qualquer aplicativo. Segure <kbd>Ctrl</kbd> + <kbd>Alt</kbd>, fale e solte. O Wispr corrige seus termos e cola o resultado onde você está escrevendo.</p>
     <div class="actions"><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe">Baixar para Windows ↓</a><a class="button secondary" href="https://github.com/ruanbarroso/barroso-wispr">Código-fonte MIT ↗</a></div>
-    <p class="meta">Windows 10/11 · binário ~10 MB · sem instalador · licença MIT</p>
+    <p class="meta">Windows 10/11 · instalação como Administrador · licença MIT</p>
   </div>
   <div class="terminal" aria-label="Demonstração do ditado">
     <div class="terminal-head"><span>DITADO AO VIVO</span><span>● REC</span></div>
@@ -40,21 +40,22 @@
   </div>
 </section>
 <section class="wrap section" id="instalar">
-  <div class="section-head"><p class="eyebrow">Comece em menos de um minuto</p><h2>Instale e configure.</h2><p>Escolha Google AI Studio ou Barroso Keys usando uma única variável: o prefixo <code>bk-</code> identifica o gateway Barroso.</p></div>
+  <div class="section-head"><p class="eyebrow">Comece em menos de um minuto</p><h2>Configure e instale.</h2><p>Escolha Google AI Studio ou Barroso Keys usando uma única variável: o prefixo <code>bk-</code> identifica o gateway Barroso.</p></div>
   <div class="setup">
-    <div class="code"><h3>1 — BAIXE</h3><pre><span class="comment"># PowerShell</span>
-Invoke-WebRequest `
-  -Uri "https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe" `
-  -OutFile "$HOME\barroso-wispr.exe"</pre></div>
-    <div class="code"><h3>2 — CONFIGURE A CHAVE</h3><pre><span class="comment"># Google AI Studio</span>
+    <div class="code"><h3>1 — CONFIGURE A CHAVE</h3><pre><span class="comment"># Google AI Studio</span>
 [Environment]::SetEnvironmentVariable(
   "WISPR_API_KEY", "SUA_CHAVE_GOOGLE", "User")
 
 <span class="comment"># ou Barroso Keys (a chave começa com bk-)</span>
 [Environment]::SetEnvironmentVariable(
   "WISPR_API_KEY", "bk-SUA_CHAVE", "User")</pre></div>
+    <div class="code"><h3>2 — BAIXE E INSTALE COMO ADMINISTRADOR</h3><pre><span class="comment"># No PowerShell aberto como Administrador</span>
+Invoke-WebRequest `
+  -Uri "https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe" `
+  -OutFile "$HOME\barroso-wispr.exe"
+& "$HOME\barroso-wispr.exe" --install</pre></div>
   </div>
-  <p class="note">Feche e reabra o terminal depois de configurar a variável. Rode <code>%USERPROFILE%\barroso-wispr.exe</code>, clique em qualquer campo de texto e segure <kbd>Ctrl</kbd> + <kbd>Alt</kbd>. Dois toques rápidos travam a gravação; pressione de novo para encerrar.</p>
+  <p class="note">A instalação exige Administrador e não se autoeleva: configure a chave como variável persistente do usuário, feche o terminal usado para configurá-la e abra um novo PowerShell com “Executar como administrador” para baixar e instalar. A instalação registra o Wispr para iniciar no próximo logon interativo e inicia o app imediatamente. Atualizações estáveis são verificadas na inicialização e a cada 24 horas; são aplicadas após o ditado atual, sem mover seus dados de usuário. O atalho global fica disponível depois de entrar na sua conta, não na tela de bloqueio. Dois toques rápidos em <kbd>Ctrl</kbd> + <kbd>Alt</kbd> travam a gravação; pressione de novo para encerrar.</p>
 </section>
 <section class="wrap section">
   <div class="callout"><div><h3>Feito para falar. Aberto para melhorar.</h3><p>O modelo Live de transcrição tem free tier no Google AI Studio. Você também pode usar o gateway Barroso Keys.</p></div><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr">Ver o projeto no GitHub ↗</a></div>
