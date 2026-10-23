@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barroso Wispr — fale, solte, está no cursor</title>
+<meta name="description" content="Ditado por voz ao vivo para Windows. Segure Ctrl+Alt, fale e solte: o texto aparece onde seu cursor está. Open source, MIT.">
+<meta name="theme-color" content="#14130f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23ff5b1f'/%3E%3Cpath d='M12 8v10a4 4 0 0 0 8 0V8m-4 18v-4m-6 0h12' fill='none' stroke='%2314130f' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{--ink:#14130f;--ink2:#1d1c17;--ink3:#2a2822;--paper:#f1ede3;--dim:#b9b3a5;--mute:#8a8476;--signal:#ff5b1f;--ok:#9bc76b;--mono:ui-monospace,"Cascadia Code","JetBrains Mono","SF Mono",Menlo,Consolas,monospace;--sans:"Inter Tight","Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,sans-serif;--gutter:clamp(20px,5vw,64px);--max:1160px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--paper);font:17px/1.55 var(--sans)}a{color:inherit;text-decoration-color:var(--signal);text-underline-offset:3px}a:hover{color:var(--signal)}code,pre,kbd{font-family:var(--mono)}:focus-visible{outline:2px solid var(--signal);outline-offset:3px}.wrap{max-width:var(--max);margin:auto;padding:0 var(--gutter)}header{height:76px;display:flex;align-items:center;justify-content:space-between;font:500 13px var(--mono);letter-spacing:.03em}.brand{display:flex;gap:10px;align-items:center;text-decoration:none}.brand b{width:30px;height:30px;display:grid;place-items:center;background:var(--signal);color:var(--ink);border-radius:5px;font-weight:900}.brand span{color:var(--dim)}nav{display:flex;gap:24px}nav a{color:var(--dim);text-decoration:none}.hero{padding:clamp(54px,10vw,132px) 0 92px;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}.eyebrow{font:12px var(--mono);color:var(--signal);text-transform:uppercase;letter-spacing:.11em;margin:0 0 22px}h1{font-size:clamp(48px,8vw,96px);line-height:.92;letter-spacing:-.055em;margin:0 0 28px;font-weight:780}h1 em{color:var(--signal);font-style:normal}.lede{font-size:clamp(18px,2vw,22px);color:var(--dim);max-width:32em;margin:0 0 32px}.lede strong{color:var(--paper);font-weight:600}.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:6px;text-decoration:none;font:600 13px var(--mono);border:1px solid var(--ink3)}.primary{background:var(--signal);color:var(--ink);border-color:var(--signal)}.primary:hover{color:var(--ink);background:#ff7846}.secondary{background:var(--ink2)}.meta{margin-top:18px;color:var(--mute);font:12px var(--mono)}.terminal{border:1px solid var(--ink3);border-radius:10px;background:#0c0b09;box-shadow:0 30px 80px -30px #000;overflow:hidden;font:13px/1.8 var(--mono)}.terminal-head{padding:11px 15px;border-bottom:1px solid var(--ink3);color:var(--mute);display:flex;justify-content:space-between}.terminal-body{padding:22px;min-height:235px}.prompt{color:var(--signal)}.muted{color:var(--mute)}.heard{color:var(--dim);margin-top:12px}.result{color:var(--ok);margin-top:8px}.cursor{display:inline-block;width:.55em;height:1.05em;background:var(--signal);vertical-align:-2px;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}.facts{border-block:1px solid var(--ink3)}.facts ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:0;padding:25px 0}.facts strong{display:block;font-size:20px}.facts span{font:11px var(--mono);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}.section{padding:90px 0}.section-head{max-width:700px;margin-bottom:34px}.section h2{font-size:clamp(32px,5vw,54px);line-height:1;letter-spacing:-.04em;margin:0 0 14px}.section-head p{color:var(--dim);margin:0}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--ink2);border:1px solid var(--ink3);border-radius:9px;padding:23px}.num{color:var(--signal);font:12px var(--mono)}.card h3{font-size:21px;margin:14px 0 8px}.card p{color:var(--dim);margin:0}.setup{display:grid;grid-template-columns:1fr 1fr;gap:16px}.code{background:#0c0b09;border:1px solid var(--ink3);border-radius:9px;overflow:hidden}.code h3{font:12px var(--mono);color:var(--dim);padding:12px 16px;margin:0;border-bottom:1px solid var(--ink3)}.code pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:16px;margin:0;font-size:12px;color:var(--paper)}.comment{color:var(--mute)}.note{border-left:2px solid var(--signal);padding:12px 16px;color:var(--dim);background:var(--ink2);margin-top:18px}.callout{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:30px;border:1px solid var(--ink3);border-radius:10px;background:var(--ink2)}.callout p{color:var(--dim);margin:7px 0 0}.callout h3{margin:0;font-size:23px}footer{border-top:1px solid var(--ink3);padding:25px 0;color:var(--mute);font:12px var(--mono)}footer .wrap{display:flex;justify-content:space-between;gap:16px}@media(max-width:800px){.hero{grid-template-columns:1fr;gap:42px}.steps{grid-template-columns:1fr}.setup{grid-template-columns:1fr}.facts ul{grid-template-columns:repeat(2,1fr)}.callout{align-items:flex-start;flex-direction:column}}@media(max-width:520px){nav{gap:12px;font-size:11px}.hero{padding-top:48px}.facts ul{gap:12px}.section{padding:65px 0}footer .wrap{flex-direction:column}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="brand" href="#top" aria-label="Barroso Wispr início"><b>W</b><span>BARROSO / WISPR</span></a>
+  <nav aria-label="Navegação"><a href="#como">Como funciona</a><a href="#instalar">Instalar</a><a href="https://github.com/ruanbarroso/barroso-wispr">GitHub ↗</a></nav>
+</header>
+<main id="top">
+<section class="wrap hero">
+  <div>
+    <p class="eyebrow">Ditado por voz · Windows · Open source</p>
+    <h1>Fale.<br>Solte.<br><em>Está no cursor.</em></h1>
+    <p class="lede">Sua voz vira texto <strong>ao vivo</strong>, em qualquer aplicativo. Segure <kbd>Ctrl</kbd> + <kbd>Alt</kbd>, fale e solte. O Wispr corrige seus termos e cola o resultado onde você está escrevendo.</p>
+    <div class="actions"><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe">Baixar para Windows ↓</a><a class="button secondary" href="https://github.com/ruanbarroso/barroso-wispr">Código-fonte MIT ↗</a></div>
+    <p class="meta">Windows 10/11 · binário ~10 MB · sem instalador · licença MIT</p>
+  </div>
+  <div class="terminal" aria-label="Demonstração do ditado">
+    <div class="terminal-head"><span>DITADO AO VIVO</span><span>● REC</span></div>
+    <div class="terminal-body"><div><span class="prompt">›</span> Ctrl + Alt pressionado</div><div class="muted">ouvindo sua voz…</div><div class="heard">“manda pro KIS e me avisa no WhatsApp”</div><div class="result">→ Manda para o KIS e me avisa no WhatsApp.</div><div class="muted">colado no campo com cursor<span class="cursor"></span></div></div>
+  </div>
+</section>
+<section class="facts"><ul class="wrap"><li><strong>Ao vivo</strong><span>não grava para depois</span></li><li><strong>Qualquer app</strong><span>onde houver cursor</span></li><li><strong>Seu dicionário</strong><span>nomes e jargões</span></li><li><strong>MIT</strong><span>código aberto</span></li></ul></section>
+<section class="wrap section" id="como">
+  <div class="section-head"><p class="eyebrow">Direto ao ponto</p><h2>Uma tecla. Sua voz. Texto pronto.</h2><p>O Wispr abre a sessão de voz quando você começa — não fica ouvindo o dia inteiro.</p></div>
+  <div class="steps">
+    <article class="card"><span class="num">01 / SEGURE</span><h3>Ctrl + Alt</h3><p>O primeiro bip confirma que está pronto para receber sua voz. O áudio já está sendo transmitido em tempo real.</p></article>
+    <article class="card"><span class="num">02 / FALE</span><h3>Do seu jeito</h3><p>Fale naturalmente. Seu dicionário pessoal ajuda com empresas, nomes próprios e termos técnicos.</p></article>
+    <article class="card"><span class="num">03 / SOLTE</span><h3>Colado no cursor</h3><p>O segundo bip marca o fim da gravação. O texto é pontuado, limpo e colado de uma vez no aplicativo ativo.</p></article>
+  </div>
+</section>
+<section class="wrap section" id="instalar">
+  <div class="section-head"><p class="eyebrow">Comece em menos de um minuto</p><h2>Instale e configure.</h2><p>Escolha Google AI Studio ou Barroso Keys usando uma única variável: o prefixo <code>bk-</code> identifica o gateway Barroso.</p></div>
+  <div class="setup">
+    <div class="code"><h3>1 — BAIXE</h3><pre><span class="comment"># PowerShell</span>
+Invoke-WebRequest `
+  -Uri "https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe" `
+  -OutFile "$HOME\barroso-wispr.exe"</pre></div>
+    <div class="code"><h3>2 — CONFIGURE A CHAVE</h3><pre><span class="comment"># Google AI Studio</span>
+[Environment]::SetEnvironmentVariable(
+  "WISPR_API_KEY", "SUA_CHAVE_GOOGLE", "User")
+
+<span class="comment"># ou Barroso Keys (a chave começa com bk-)</span>
+[Environment]::SetEnvironmentVariable(
+  "WISPR_API_KEY", "bk-SUA_CHAVE", "User")</pre></div>
+  </div>
+  <p class="note">Feche e reabra o terminal depois de configurar a variável. Rode <code>%USERPROFILE%\barroso-wispr.exe</code>, clique em qualquer campo de texto e segure <kbd>Ctrl</kbd> + <kbd>Alt</kbd>. Dois toques rápidos travam a gravação; pressione de novo para encerrar.</p>
+</section>
+<section class="wrap section">
+  <div class="callout"><div><h3>Feito para falar. Aberto para melhorar.</h3><p>O modelo Live de transcrição tem free tier no Google AI Studio. Você também pode usar o gateway Barroso Keys.</p></div><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr">Ver o projeto no GitHub ↗</a></div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Barroso Wispr · MIT</span><span>Feito por <a href="https://barroso.tec.br">Barroso</a></span></div></footer>
+</body>
+</html>
