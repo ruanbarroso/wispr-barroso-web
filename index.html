@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Barroso Wispr — fale, solte, está no cursor</title>
-<meta name="description" content="Ditado por voz ao vivo para Windows. Segure Ctrl+Alt, fale e solte: o texto aparece onde seu cursor está. Open source, MIT.">
+<meta name="description" content="Ditado por voz ao vivo para macOS e Windows. Segure Ctrl+Alt (Ctrl+Option no Mac), fale e solte: o texto aparece onde seu cursor está. Open source, MIT.">
 <meta name="theme-color" content="#14130f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23ff5b1f'/%3E%3Cpath d='M12 8v10a4 4 0 0 0 8 0V8m-4 18v-4m-6 0h12' fill='none' stroke='%2314130f' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
@@ -19,11 +19,11 @@
 <main id="top">
 <section class="wrap hero">
   <div>
-    <p class="eyebrow">Ditado por voz · Windows · Open source</p>
+    <p class="eyebrow">Ditado por voz · macOS e Windows · Open source</p>
     <h1>Fale.<br>Solte.<br><em>Está no cursor.</em></h1>
-    <p class="lede">Sua voz vira texto <strong>ao vivo</strong>, em qualquer aplicativo. Segure <kbd>Ctrl</kbd> + <kbd>Alt</kbd>, fale e solte. O Wispr corrige seus termos e cola o resultado onde você está escrevendo.</p>
-    <div class="actions"><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe">Baixar para Windows ↓</a><a class="button secondary" href="https://github.com/ruanbarroso/barroso-wispr">Código-fonte MIT ↗</a></div>
-    <p class="meta">Windows 10/11 · instalação como Administrador · licença MIT</p>
+    <p class="lede">Sua voz vira texto <strong>ao vivo</strong>, em qualquer aplicativo. Segure <kbd>Ctrl</kbd> + <kbd>Alt</kbd> (no Mac, <kbd>Control</kbd> + <kbd>Option</kbd>), fale e solte. O Wispr corrige seus termos e cola o resultado onde você está escrevendo.</p>
+    <div class="actions"><a class="button primary" href="#mac">Instalar no Mac ↓</a><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-windows-amd64.exe">Baixar para Windows ↓</a><a class="button secondary" href="https://github.com/ruanbarroso/barroso-wispr">Código-fonte MIT ↗</a></div>
+    <p class="meta">macOS (Apple Silicon e Intel) · Windows 10/11 · licença MIT</p>
   </div>
   <div class="terminal" aria-label="Demonstração do ditado">
     <div class="terminal-head"><span>DITADO AO VIVO</span><span>● REC</span></div>
@@ -40,7 +40,7 @@
   </div>
 </section>
 <section class="wrap section" id="instalar">
-  <div class="section-head"><p class="eyebrow">Comece em menos de um minuto</p><h2>Configure e instale.</h2><p>Escolha Google AI Studio ou Barroso Keys usando uma única variável: o prefixo <code>bk-</code> identifica o gateway Barroso.</p></div>
+  <div class="section-head"><p class="eyebrow">Comece em menos de um minuto</p><h2>Configure e instale no Windows.</h2><p>Escolha Google AI Studio ou Barroso Keys usando uma única variável: o prefixo <code>bk-</code> identifica o gateway Barroso.</p></div>
   <div class="setup">
     <div class="code"><h3>1 — CONFIGURE A CHAVE</h3><pre><span class="comment"># Google AI Studio</span>
 [Environment]::SetEnvironmentVariable(
@@ -56,6 +56,18 @@ Invoke-WebRequest `
 & "$HOME\barroso-wispr.exe" --install</pre></div>
   </div>
   <p class="note">A instalação exige Administrador e não se autoeleva: configure a chave como variável persistente do usuário, feche o terminal usado para configurá-la e abra um novo PowerShell com “Executar como administrador” para baixar e instalar. A instalação registra o Wispr para iniciar no próximo logon interativo e inicia o app imediatamente. Atualizações estáveis são verificadas na inicialização e a cada 24 horas; são aplicadas após o ditado atual, sem mover seus dados de usuário. O atalho global fica disponível depois de entrar na sua conta, não na tela de bloqueio. Dois toques rápidos em <kbd>Ctrl</kbd> + <kbd>Alt</kbd> travam a gravação; pressione de novo para encerrar.</p>
+</section>
+<section class="wrap section" id="mac">
+  <div class="section-head"><p class="eyebrow">macOS</p><h2>Instale no Mac.</h2><p>Sem administrador: o app fica em <code>~/Applications</code> e inicia com a sua sessão.</p></div>
+  <div class="setup">
+    <div class="code"><h3>1 — BAIXE</h3><pre><span class="comment"># No Terminal (Apple Silicon; em Mac Intel troque arm64 por amd64)</span>
+curl -L -o ~/barroso-wispr \
+  https://github.com/ruanbarroso/barroso-wispr/releases/latest/download/barroso-wispr-darwin-arm64
+chmod +x ~/barroso-wispr</pre></div>
+    <div class="code"><h3>2 — INSTALE COM A SUA CHAVE</h3><pre><span class="comment"># Google AI Studio ou Barroso Keys (bk-...)</span>
+WISPR_API_KEY="SUA_CHAVE" ~/barroso-wispr --install</pre></div>
+  </div>
+  <p class="note">O instalador assina o app localmente: se o macOS pedir acesso ao Keychain, clique em “Sempre Permitir”. Depois libere o Barroso Wispr em Ajustes do Sistema › Privacidade e Segurança, em <strong>Monitoramento de Entrada</strong> (atalho), <strong>Acessibilidade</strong> (colar o texto) e <strong>Microfone</strong>. No Mac, o atalho é <kbd>Control</kbd> + <kbd>Option</kbd> esquerdos, e o texto ditado continua na área de transferência depois de colado.</p>
 </section>
 <section class="wrap section">
   <div class="callout"><div><h3>Feito para falar. Aberto para melhorar.</h3><p>O modelo Live de transcrição tem free tier no Google AI Studio. Você também pode usar o gateway Barroso Keys.</p></div><a class="button primary" href="https://github.com/ruanbarroso/barroso-wispr">Ver o projeto no GitHub ↗</a></div>
